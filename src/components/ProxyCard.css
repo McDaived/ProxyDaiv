@@ -1,0 +1,147 @@
+/* ===== Proxy Card ===== */
+.proxy-card {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-3) var(--sp-5);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.proxy-card:hover {
+  border-color: var(--color-border-glow);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ===== Identity (flag + country) ===== */
+.proxy-card__identity {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex: 1;
+  min-width: 0;
+}
+
+.proxy-card__flag-img {
+  width: 24px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.proxy-card__flag-globe {
+  font-size: 1.1rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.proxy-card__country {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  color: var(--color-gray-100);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== Ping ===== */
+.proxy-card__ping {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+  direction: ltr; /* always LTR — numbers read left to right */
+}
+
+.proxy-card__ping-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  animation: ping-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ping-pulse {
+  0%, 100% { opacity: 1;   transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+
+.proxy-card__ping-ms {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--color-white);
+  min-width: 42px;
+  text-align: right;
+}
+
+.proxy-card__ping-label {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  min-width: 42px;
+  text-align: left;
+}
+
+/* ===== Add Button ===== */
+.proxy-card__add {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--color-gray-300);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.proxy-card__add:hover {
+  border-color: #4a9eda;
+  color: #7fc3f0;
+  background: rgba(74, 158, 218, 0.08);
+}
+
+.proxy-card__tg-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 520px) {
+  .proxy-card {
+    padding: var(--sp-3);
+    gap: var(--sp-2);
+  }
+
+  .proxy-card__ping-label {
+    display: none;
+  }
+
+  .proxy-card__country {
+    font-size: var(--fs-xs);
+  }
+
+  .proxy-card__add span:last-child {
+    display: none;
+  }
+
+  .proxy-card__add {
+    padding: var(--sp-2);
+  }
+
+  .proxy-card__tg-icon {
+    width: 18px;
+    height: 18px;
+  }
+}

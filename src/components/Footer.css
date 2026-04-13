@@ -1,0 +1,25 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-2);
+  padding: var(--sp-6) var(--sp-4);
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.footer__text {
+  color: var(--color-gray-500);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.footer__sep {
+  color: var(--color-gray-700);
+}
+
+.footer__sub {
+  color: var(--color-gray-700);
+}
