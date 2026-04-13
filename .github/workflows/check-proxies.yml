@@ -2,13 +2,8 @@ name: Check Proxies
 
 on:
   schedule:
-    - cron: '*/5 * * * *'   # every 5 minutes
-  workflow_dispatch:
-
-
-concurrency:
-  group: check-proxies
-  cancel-in-progress: true
+    - cron: '0 * * * *'   # check every hour if source changed
+  workflow_dispatch:        # manual trigger from GitHub UI
 
 jobs:
   check:
@@ -21,28 +16,51 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Check if proxy source has changed
+        id: diff
+        run: |
+          CURRENT=$(curl -sf "https://raw.githubusercontent.com/SoliSpirit/mtproto/refs/heads/master/all_proxies.txt" | sha256sum | cut -d' ' -f1)
+          echo "current=$CURRENT" >> $GITHUB_OUTPUT
+
+          if [ -f public/last_hash.txt ]; then
+            STORED=$(cat public/last_hash.txt)
+          else
+            STORED=""
+          fi
+
+          if [ "$CURRENT" = "$STORED" ]; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "No changes — skipping checker."
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            echo "Source changed — running checker."
+          fi
+
       - name: Setup Node.js
+        if: steps.diff.outputs.changed == 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
       - name: Install checker dependencies
+        if: steps.diff.outputs.changed == 'true'
         working-directory: checker
-        run: npm install --prefer-offline || npm install
+        run: npm install
 
       - name: Run proxy checker
+        if: steps.diff.outputs.changed == 'true'
         working-directory: checker
         run: |
           TDLIB_DIR=$(node -e "const {getTdjson}=require('prebuilt-tdlib');process.stdout.write(require('path').dirname(getTdjson()))")
-          echo "TDLib dir: $TDLIB_DIR"
-          ls "$TDLIB_DIR"
           LD_LIBRARY_PATH="$TDLIB_DIR:$LD_LIBRARY_PATH" node check.js
         timeout-minutes: 10
 
-      - name: Commit results
+      - name: Save new hash & commit results
+        if: steps.diff.outputs.changed == 'true'
         run: |
+          echo "${{ steps.diff.outputs.current }}" > public/last_hash.txt
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/proxies.json
+          git add public/proxies.json public/last_hash.txt
           git diff --staged --quiet || git commit -m "chore: update working proxies [skip ci]"
           git push
