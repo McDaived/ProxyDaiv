@@ -36,19 +36,17 @@ const SOCIALS = [
 
 function handleClick(e, deepLink, webLink) {
   const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
-  if (isMobile) {
-    e.preventDefault()
-    // Try to open the app; fall back to web after 600ms
-    const start = Date.now()
-    window.location.href = deepLink
-    setTimeout(() => {
-      // Only open web fallback if user is still on the page
-      if (Date.now() - start < 1500) {
-        window.open(webLink, '_blank', 'noopener,noreferrer')
-      }
-    }, 600)
-  }
-  // On desktop: let the <a> href handle it naturally
+  if (!isMobile) return // let <a href> handle it on desktop
+
+  e.preventDefault()
+  window.location.href = deepLink
+
+  setTimeout(() => {
+    // If the app opened, the page becomes hidden — don't redirect
+    if (!document.hidden) {
+      window.location.href = webLink
+    }
+  }, 1500)
 }
 
 export default function SocialLinks() {
