@@ -132,16 +132,12 @@
     font-size: var(--fs-xs);
   }
 
-  .proxy-card__add span:last-child {
-    display: none;
-  }
-
   .proxy-card__add {
-    padding: var(--sp-2);
+    padding: var(--sp-2) var(--sp-3);
   }
 
   .proxy-card__tg-icon {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
   }
 }
