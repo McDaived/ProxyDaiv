@@ -32,7 +32,11 @@ jobs:
 
       - name: Run proxy checker
         working-directory: checker
-        run: node check.js
+        run: |
+          TDLIB_DIR=$(node -e "const {getTdjson}=require('prebuilt-tdlib');process.stdout.write(require('path').dirname(getTdjson()))")
+          echo "TDLib dir: $TDLIB_DIR"
+          ls "$TDLIB_DIR"
+          LD_LIBRARY_PATH="$TDLIB_DIR:$LD_LIBRARY_PATH" node check.js
         timeout-minutes: 10
 
       - name: Commit results
