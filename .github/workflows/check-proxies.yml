@@ -5,7 +5,7 @@ on:
     - cron: '*/5 * * * *'   # every 5 minutes
   workflow_dispatch:
 
-# Cancel any in-progress run if a new one starts
+
 concurrency:
   group: check-proxies
   cancel-in-progress: true
@@ -25,12 +25,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: checker/package.json
 
       - name: Install checker dependencies
         working-directory: checker
-        run: npm install
+        run: npm install --prefer-offline || npm install
 
       - name: Run proxy checker
         working-directory: checker
