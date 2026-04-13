@@ -1,41 +1,48 @@
+'use strict'
+
 /**
- * MTProto Proxy Checker
- *
- * Uses TDLib (official Telegram library) to verify each proxy by actually
- * connecting to Telegram through it. Far more accurate than TCP/TLS checks.
- *
- * Run:  node check.js
- * Output: ../public/proxies.json  (list of working proxies)
+ * MTProto Proxy Checker (CommonJS)
+ * Uses TDLib to verify each proxy by actually connecting to Telegram.
  */
 
-import tdl from 'tdl'
-import { getTdjson } from 'prebuilt-tdlib'
-import { writeFile, mkdir } from 'fs/promises'
-import { existsSync } from 'fs'
-import { join, dirname } from 'path'
-import { fileURLToPath } from 'url'
-
-const __dir  = dirname(fileURLToPath(import.meta.url))
-const OUTPUT = join(__dir, '..', 'public', 'proxies.json')
-
-const PROXY_SOURCE  = 'https://raw.githubusercontent.com/SoliSpirit/mtproto/refs/heads/master/all_proxies.txt'
-const PING_TIMEOUT  = 15_000   // ms per proxy
-const CONCURRENCY   = 15       // parallel checks — finishes ~100 proxies in ~2 min
-
-// Official Telegram test API credentials (public, for testing only)
-const API_ID   = 94575
-const API_HASH = 'a3406de8d171bb422bb6ddf3bbd800e2'
+const tdl          = require('tdl')
+const { getTdjson } = require('prebuilt-tdlib')
+const fs           = require('fs')
+const path         = require('path')
+const https        = require('https')
+const http         = require('http')
 
 tdl.configure(getTdjson())
 
-// ── Parse tg://proxy?... or https://t.me/proxy?... ───────────────────────────
+const PROXY_SOURCE = 'https://raw.githubusercontent.com/SoliSpirit/mtproto/refs/heads/master/all_proxies.txt'
+const OUTPUT       = path.join(__dirname, '..', 'public', 'proxies.json')
+const PING_TIMEOUT = 15000
+const CONCURRENCY  = 15
+
+const API_ID   = 94575
+const API_HASH = 'a3406de8d171bb422bb6ddf3bbd800e2'
+
+// ── Fetch URL as text ─────────────────────────────────────────────────────────
+
+function fetchText(url) {
+  return new Promise((resolve, reject) => {
+    const lib = url.startsWith('https') ? https : http
+    lib.get(url, res => {
+      let data = ''
+      res.on('data', chunk => data += chunk)
+      res.on('end', () => resolve(data))
+    }).on('error', reject)
+  })
+}
+
+// ── Parse proxy URL ───────────────────────────────────────────────────────────
 
 function parseProxyUrl(line) {
   try {
-    const qs = line.includes('?') ? line.split('?')[1] : line
-    const p  = new URLSearchParams(qs)
+    const qs     = line.includes('?') ? line.split('?')[1] : ''
+    const p      = new URLSearchParams(qs)
     const server = p.get('server')
-    const port   = parseInt(p.get('port') ?? '', 10)
+    const port   = parseInt(p.get('port') || '', 10)
     const secret = p.get('secret')
     if (!server || !secret || isNaN(port) || port < 1 || port > 65535) return null
     return { server, port, secret }
@@ -44,15 +51,15 @@ function parseProxyUrl(line) {
   }
 }
 
-// ── Normalize secret to lowercase hex ────────────────────────────────────────
+// ── Normalize secret to hex ───────────────────────────────────────────────────
 
 function normalizeSecret(secret) {
   if (/^[0-9a-fA-F]+$/.test(secret)) return secret.toLowerCase()
   try {
     const b64    = secret.replace(/-/g, '+').replace(/_/g, '/')
     const padded = b64 + '='.repeat((4 - b64.length % 4) % 4)
-    const binary = atob(padded)
-    return [...binary].map(c => c.charCodeAt(0).toString(16).padStart(2, '0')).join('')
+    const binary = Buffer.from(padded, 'base64')
+    return binary.toString('hex')
   } catch {
     return secret.toLowerCase()
   }
@@ -61,7 +68,7 @@ function normalizeSecret(secret) {
 // ── Check one proxy via TDLib ─────────────────────────────────────────────────
 
 async function checkProxy(server, port, hexSecret, idx) {
-  const dbDir = `/tmp/tdlib_proxy_${idx}_${Date.now()}`
+  const dbDir = `/tmp/tdlib_${idx}_${process.pid}`
 
   const client = tdl.createClient({
     apiId:             API_ID,
@@ -71,7 +78,7 @@ async function checkProxy(server, port, hexSecret, idx) {
     verbosityLevel:    0,
   })
 
-  const timeout = (ms) => new Promise((_, r) => setTimeout(() => r(new Error('TIMEOUT')), ms))
+  const timeout = ms => new Promise((_, r) => setTimeout(() => r(new Error('TIMEOUT')), ms))
 
   try {
     await Promise.race([client.connect(), timeout(PING_TIMEOUT)])
@@ -104,7 +111,7 @@ async function checkProxy(server, port, hexSecret, idx) {
 
 async function runPool(tasks, limit) {
   const results = new Array(tasks.length)
-  let   next    = 0
+  let next = 0
 
   async function worker() {
     while (next < tasks.length) {
@@ -121,8 +128,7 @@ async function runPool(tasks, limit) {
 
 async function main() {
   console.log('Fetching proxy list...')
-  const res  = await fetch(PROXY_SOURCE)
-  const text = await res.text()
+  const text = await fetchText(PROXY_SOURCE)
 
   const proxies = text
     .split('\n')
@@ -144,8 +150,8 @@ async function main() {
 
   console.log(`Parsed ${proxies.length} valid proxies. Checking with concurrency=${CONCURRENCY}...`)
 
-  let done = 0
   const working = []
+  let done = 0
 
   const tasks = proxies.map((proxy, idx) => async () => {
     const alive = await checkProxy(proxy.server, proxy.port, proxy.hex, idx)
@@ -155,11 +161,11 @@ async function main() {
   })
 
   await runPool(tasks, CONCURRENCY)
-  console.log(`\n\nResult: ${working.length} / ${proxies.length} proxies are working.`)
+  console.log(`\n\nDone: ${working.length} / ${proxies.length} proxies are working.`)
 
   // Save output
-  const publicDir = join(__dir, '..', 'public')
-  if (!existsSync(publicDir)) await mkdir(publicDir, { recursive: true })
+  const publicDir = path.join(__dirname, '..', 'public')
+  if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true })
 
   const output = working.map(p => ({
     id:     p.id,
@@ -169,8 +175,8 @@ async function main() {
     tgLink: p.tgLink,
   }))
 
-  await writeFile(OUTPUT, JSON.stringify(output, null, 2), 'utf8')
-  console.log(`Saved → ${OUTPUT}`)
+  fs.writeFileSync(OUTPUT, JSON.stringify(output, null, 2), 'utf8')
+  console.log(`Saved ${output.length} working proxies → ${OUTPUT}`)
 }
 
 main().catch(err => { console.error(err); process.exit(1) })
