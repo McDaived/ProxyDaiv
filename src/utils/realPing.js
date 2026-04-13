@@ -92,9 +92,11 @@ async function stunPing(server, port) {
 // ── Ping status thresholds ────────────────────────────────────────────────
 
 export function pingStatus(ms) {
-  if (ms === null || ms === undefined) return { key: 'pingSlow', color: 'var(--ping-slow)' }
-  if (ms <= 120) return { key: 'pingFast', color: 'var(--ping-fast)' }
-  if (ms <= 150) return { key: 'pingGood', color: 'var(--ping-good)' }
-  if (ms <= 280) return { key: 'pingFair', color: 'var(--ping-fair)' }
-  return           { key: 'pingSlow', color: 'var(--ping-slow)' }
+  if (ms === null || ms === undefined) return { key: 'pingDead',   color: 'var(--ping-slow)' }
+  if (ms <= 200)  return { key: 'pingFast',   color: 'var(--ping-fast)' }
+  if (ms <= 250)  return { key: 'pingGood',   color: 'var(--ping-good)' }
+  if (ms <= 350)  return { key: 'pingFair',   color: 'var(--ping-fair)' }
+  if (ms <= 600)  return { key: 'pingSlow',   color: 'var(--ping-slow)' }
+  if (ms <= 1000) return { key: 'pingNoSig',  color: 'var(--ping-dead)' }
+  return                 { key: 'pingDead',   color: 'var(--ping-slow)' }
 }

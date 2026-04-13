@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { fetchGeoBatch, getCountryCached } from '../utils/getCountry'
+import { getVisitorGeo, basePing } from '../utils/simulatePing'
 
 let cachedProxies = null
 
@@ -69,16 +70,22 @@ export function useProxies() {
       setProxies(raw)
       setLoading(false)
 
-      // Fetch geo silently in background (used only for ping estimation)
-      await fetchGeoBatch(raw.map(p => p.server))
+      // Fetch geo + visitor location in parallel (for ping estimation & sorting)
+      const [, visitor] = await Promise.all([
+        fetchGeoBatch(raw.map(p => p.server)),
+        getVisitorGeo(),
+      ])
 
       if (cancelRef.current) return
 
-      // Re-render with countryCode for accurate ping estimates
-      const enriched = raw.map(p => ({
-        ...p,
-        countryCode: getCountryCached(p.server).countryCode ?? null,
-      }))
+      // Enrich with countryCode, sort by estimated ping, then number by position
+      const enriched = raw
+        .map(p => {
+          const countryCode = getCountryCached(p.server).countryCode ?? null
+          return { ...p, countryCode, _sort: basePing(countryCode, visitor) }
+        })
+        .sort((a, b) => a._sort - b._sort)
+        .map((p, i) => ({ ...p, displayNumber: i + 1 }))
 
       cachedProxies = enriched
       setProxies(enriched)

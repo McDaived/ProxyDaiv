@@ -21,6 +21,7 @@
   --ping-good:   #ffdd00;
   --ping-fair:   #ff8800;
   --ping-slow:   #ff3333;
+  --ping-dead:   #990000;
 
   /* Typography */
   --font-primary: 'Inter', 'Segoe UI', system-ui, sans-serif;

@@ -52,75 +52,73 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: var(--sp-3);
   padding-top: var(--sp-4);
 }
 
 .logo {
-  font-size: clamp(2.5rem, 8vw, 4.5rem);
-  font-family: var(--font-mono);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--color-white);
+  font-size: clamp(2.8rem, 9vw, 5rem);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   position: relative;
   cursor: default;
   user-select: none;
 
-  /* Glitch layers via pseudo-elements */
-  &::before,
-  &::after {
-    content: attr(data-text);
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
+  /* Liquid chrome gradient */
+  background: linear-gradient(
+    120deg,
+    #555555 0%,
+    #aaaaaa 20%,
+    #ffffff 35%,
+    #e0e0e0 45%,
+    #ffffff 50%,
+    #cccccc 60%,
+    #888888 75%,
+    #ffffff 88%,
+    #666666 100%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 
-  &::before {
-    color: var(--color-white);
-    opacity: 0.8;
-    animation: glitch-top 4s infinite linear;
-    clip-path: polygon(0 0, 100% 0, 100% 38%, 0 38%);
-  }
+  /* Glow */
+  filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.25))
+          drop-shadow(0 0 40px rgba(255, 255, 255, 0.08));
 
-  &::after {
-    color: var(--color-white);
-    opacity: 0.6;
-    animation: glitch-bottom 4s infinite linear;
-    clip-path: polygon(0 62%, 100% 62%, 100% 100%, 0 100%);
-  }
+  animation: liquid-flow 3.5s ease-in-out infinite;
 }
 
-/* Underline pulse */
-.logo-underline {
-  width: 48px;
-  height: 2px;
-  background: var(--color-white);
-  border-radius: 2px;
-  animation: pulse-width 3s ease-in-out infinite;
+/* Shine sweep overlay */
+.logo::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine-sweep 3.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
-/* ===== Glitch Keyframes ===== */
-@keyframes glitch-top {
-  0%,  90%            { transform: translate(0, 0);       opacity: 0; }
-  91%                 { transform: translate(-3px, -2px);  opacity: 0.8; }
-  92%                 { transform: translate(3px,  1px);   opacity: 0.6; }
-  93%                 { transform: translate(-2px, -1px);  opacity: 0.8; }
-  94%                 { transform: translate(0, 0);        opacity: 0; }
-  100%                { transform: translate(0, 0);        opacity: 0; }
+/* ===== Keyframes ===== */
+@keyframes liquid-flow {
+  0%   { background-position: 0%   50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0%   50%; }
 }
 
-@keyframes glitch-bottom {
-  0%,  90%            { transform: translate(0, 0);        opacity: 0; }
-  91%                 { transform: translate(3px,  2px);   opacity: 0.6; }
-  92%                 { transform: translate(-3px, -1px);  opacity: 0.8; }
-  93%                 { transform: translate(2px,  1px);   opacity: 0.6; }
-  94%                 { transform: translate(0, 0);        opacity: 0; }
-  100%                { transform: translate(0, 0);        opacity: 0; }
-}
-
-@keyframes pulse-width {
-  0%, 100% { width: 48px; opacity: 1; }
-  50%       { width: 80px; opacity: 0.5; }
+@keyframes shine-sweep {
+  0%         { background-position: -100% 0; }
+  60%, 100%  { background-position:  200% 0; }
 }
 
 /* ===== Responsive ===== */

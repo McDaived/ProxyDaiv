@@ -21,10 +21,9 @@ export default function Header() {
 
         {/* Logo */}
         <div className="logo-wrap">
-          <h1 className="logo" data-text={t.siteName}>
+          <h1 className="logo">
             {t.siteName}
           </h1>
-          <div className="logo-underline" />
         </div>
 
       </div>

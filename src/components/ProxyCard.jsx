@@ -6,12 +6,30 @@ export default function ProxyCard({ proxy }) {
   const { t } = useLanguage()
   const { ms, status } = usePing(proxy.server, proxy.port, proxy.countryCode ?? null)
 
+  const flagSrc = proxy.countryCode
+    ? `https://flagcdn.com/24x18/${proxy.countryCode.toLowerCase()}.png`
+    : null
+
+  const displayName = proxy.displayNumber ? `Server ${proxy.displayNumber}` : proxy.server
+
   return (
     <div className="proxy-card">
 
-      {/* Left: server name */}
+      {/* Left: flag + server number */}
       <div className="proxy-card__identity">
-        <span className="proxy-card__country">{proxy.server}</span>
+        {flagSrc ? (
+          <img
+            className="proxy-card__flag-img"
+            src={flagSrc}
+            alt={proxy.countryCode}
+            width="24"
+            height="18"
+            loading="lazy"
+          />
+        ) : (
+          <span className="proxy-card__flag-globe">🌐</span>
+        )}
+        <span className="proxy-card__country">{displayName}</span>
       </div>
 
       {/* Center: ping */}
