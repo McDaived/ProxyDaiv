@@ -1,14 +1,13 @@
 {
   "name": "proxy-checker",
   "version": "1.0.0",
-  "type": "module",
   "description": "Checks MTProto proxies using TDLib",
   "main": "check.js",
   "engines": {
     "node": ">=18.0.0"
   },
   "dependencies": {
-    "prebuilt-tdlib": "latest",
-    "tdl": "latest"
+    "prebuilt-tdlib": "0.1008059.0",
+    "tdl": "7.4.1"
   }
 }
