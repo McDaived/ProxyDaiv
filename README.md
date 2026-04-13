@@ -42,7 +42,7 @@ Speed depends on server load and distance.
 
 ## 🌐 Website
 
-
+[ProxyDaiv](https://mcdaived.github.io/ProxyDaiv/)
 
 ---
 
