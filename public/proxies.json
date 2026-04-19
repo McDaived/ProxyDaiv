@@ -7,6 +7,13 @@
     "tgLink": "tg://proxy?server=91.107.182.200&port=8443&secret=dd104462821249bd7ac519130220c25d09"
   },
   {
+    "id": 14,
+    "server": "195.254.165.249",
+    "port": 25565,
+    "secret": "dd79e344818749bd7ac519130220c25d09",
+    "tgLink": "tg://proxy?server=195.254.165.249&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
+  },
+  {
     "id": 9,
     "server": "116.203.0.182",
     "port": 8443,
@@ -21,7 +28,14 @@
     "tgLink": "tg://proxy?server=49.13.35.164&port=8443&secret=dd104462821249bd7ac519130220c25d09"
   },
   {
-    "id": 23,
+    "id": 11,
+    "server": "compassionate-heyrovsky.cfd",
+    "port": 1984,
+    "secret": "ddc76b8cb6d99f20a7c1a3ef1b67bbb070",
+    "tgLink": "tg://proxy?server=compassionate-heyrovsky.cfd&port=1984&secret=ddc76b8cb6d99f20a7c1a3ef1b67bbb070"
+  },
+  {
+    "id": 24,
     "server": "172.65.102.115",
     "port": 22,
     "secret": "dd79e344818749bd7ac519130220c25d09",
@@ -35,13 +49,6 @@
     "tgLink": "tg://proxy?server=tg.plusonevpn.com&port=1984&secret=dd4c7671c23268cbcb7330ff7ee9ab0622"
   },
   {
-    "id": 11,
-    "server": "compassionate-heyrovsky.cfd",
-    "port": 1984,
-    "secret": "ddc76b8cb6d99f20a7c1a3ef1b67bbb070",
-    "tgLink": "tg://proxy?server=compassionate-heyrovsky.cfd&port=1984&secret=ddc76b8cb6d99f20a7c1a3ef1b67bbb070"
-  },
-  {
     "id": 12,
     "server": "proxyg.site",
     "port": 443,
@@ -49,18 +56,11 @@
     "tgLink": "tg://proxy?server=proxyg.site&port=443&secret=eed68360458af63073bac1394e8c7a48da70726f7879672e73697465"
   },
   {
-    "id": 63,
+    "id": 64,
     "server": "46.225.29.180",
     "port": 443,
     "secret": "ee636c6f7564666c6172652e636f6db6",
     "tgLink": "tg://proxy?server=46.225.29.180&port=443&secret=ee636c6f7564666c6172652e636f6db6"
-  },
-  {
-    "id": 85,
-    "server": "142.54.189.107",
-    "port": 443,
-    "secret": "ee09db815a6d82a31fda76f872230c69d7706b676275696c642e6f7267",
-    "tgLink": "tg://proxy?server=142.54.189.107&port=443&secret=ee09db815a6d82a31fda76f872230c69d7706b676275696c642e6f7267"
   },
   {
     "id": 86,
@@ -70,14 +70,14 @@
     "tgLink": "tg://proxy?server=oneproxys.best&port=443&secret=eed68360458af63073bac1394e8c7a48da6f6e6570726f7879732e62657374"
   },
   {
-    "id": 87,
-    "server": "45.128.235.219",
-    "port": 443,
-    "secret": "4ae50768d6cdfc8c708fb81c7e582072",
-    "tgLink": "tg://proxy?server=45.128.235.219&port=443&secret=4ae50768d6cdfc8c708fb81c7e582072"
+    "id": 88,
+    "server": "tg.caxero.ru",
+    "port": 6767,
+    "secret": "fffc0efade691faeaccb0ee0cdbf1773",
+    "tgLink": "tg://proxy?server=tg.caxero.ru&port=6767&secret=fffc0efade691faeaccb0ee0cdbf1773"
   },
   {
-    "id": 90,
+    "id": 89,
     "server": "rkn.tg",
     "port": 853,
     "secret": "ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b",
@@ -85,48 +85,41 @@
   },
   {
     "id": 91,
-    "server": "akenai.tg",
-    "port": 853,
-    "secret": "ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b",
-    "tgLink": "tg://proxy?server=akenai.tg&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b"
-  },
-  {
-    "id": 92,
     "server": "91.107.189.181",
     "port": 8443,
     "secret": "dd104462821249bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=91.107.189.181&port=8443&secret=dd104462821249bd7ac519130220c25d09"
   },
   {
-    "id": 93,
+    "id": 92,
     "server": "91.107.169.174",
     "port": 8443,
     "secret": "dd104462821249bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=91.107.169.174&port=8443&secret=dd104462821249bd7ac519130220c25d09"
   },
   {
-    "id": 94,
+    "id": 93,
     "server": "91.107.174.85",
     "port": 8443,
     "secret": "dd104462821249bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=91.107.174.85&port=8443&secret=dd104462821249bd7ac519130220c25d09"
   },
   {
-    "id": 95,
+    "id": 94,
     "server": "207.180.203.24",
     "port": 443,
     "secret": "7uBwJkgHh8uyF8nq_Te86VtzMy5hbWF6b25hd3MuY29t",
     "tgLink": "tg://proxy?server=207.180.203.24&port=443&secret=7uBwJkgHh8uyF8nq_Te86VtzMy5hbWF6b25hd3MuY29t"
   },
   {
-    "id": 96,
-    "server": "195.254.165.249",
-    "port": 25565,
-    "secret": "dd79e344818749bd7ac519130220c25d09",
-    "tgLink": "tg://proxy?server=195.254.165.249&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
+    "id": 97,
+    "server": "proxy3-sosavpn.duckdns.org",
+    "port": 8443,
+    "secret": "bfb77f1c4bf8a5c16eb5a3c83954ce69",
+    "tgLink": "tg://proxy?server=proxy3-sosavpn.duckdns.org&port=8443&secret=bfb77f1c4bf8a5c16eb5a3c83954ce69"
   },
   {
-    "id": 97,
+    "id": 98,
     "server": "195.254.165.250",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
@@ -134,30 +127,30 @@
   },
   {
     "id": 99,
-    "server": "195.254.165.253",
-    "port": 25565,
-    "secret": "dd79e344818749bd7ac519130220c25d09",
-    "tgLink": "tg://proxy?server=195.254.165.253&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
-  },
-  {
-    "id": 98,
     "server": "195.254.165.251",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=195.254.165.251&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
   },
   {
-    "id": 101,
-    "server": "195.254.165.247",
+    "id": 100,
+    "server": "195.254.165.253",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
-    "tgLink": "tg://proxy?server=195.254.165.247&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
+    "tgLink": "tg://proxy?server=195.254.165.253&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
   },
   {
-    "id": 100,
+    "id": 101,
     "server": "195.254.165.252",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=195.254.165.252&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
+  },
+  {
+    "id": 102,
+    "server": "195.254.165.247",
+    "port": 25565,
+    "secret": "dd79e344818749bd7ac519130220c25d09",
+    "tgLink": "tg://proxy?server=195.254.165.247&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
   }
 ]
