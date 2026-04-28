@@ -29,31 +29,24 @@
   },
   {
     "id": 74,
-    "server": "195.254.165.251",
-    "port": 25565,
-    "secret": "dd79e344818749bd7ac519130220c25d09",
-    "tgLink": "tg://proxy?server=195.254.165.251&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
-  },
-  {
-    "id": 73,
-    "server": "92.118.234.215",
+    "server": "108.165.233.137",
     "port": 443,
-    "secret": "dddb9b51b5ce9a2820ff62d348cb23f1b9",
-    "tgLink": "tg://proxy?server=92.118.234.215&port=443&secret=dddb9b51b5ce9a2820ff62d348cb23f1b9"
+    "secret": "24bd7c651c0cdef3195110f94d4c92ce",
+    "tgLink": "tg://proxy?server=108.165.233.137&port=443&secret=24bd7c651c0cdef3195110f94d4c92ce"
   },
   {
     "id": 76,
-    "server": "147.45.42.104",
+    "server": "193.233.210.222",
     "port": 443,
-    "secret": "ee8905c5cfeaffb1fc2f7aa33e5c99df3d766b2e636f6d",
-    "tgLink": "tg://proxy?server=147.45.42.104&port=443&secret=ee8905c5cfeaffb1fc2f7aa33e5c99df3d766b2e636f6d"
+    "secret": "ddaf8b8433ec53435133379366e6024926",
+    "tgLink": "tg://proxy?server=193.233.210.222&port=443&secret=ddaf8b8433ec53435133379366e6024926"
   },
   {
-    "id": 75,
-    "server": "win.sosproxy.space",
+    "id": 77,
+    "server": "proxy.proxymtproto.net",
     "port": 443,
-    "secret": "ee477ccce74a28c13a2ef6ec9e01510c3164726976652e676f6f676c652e636f6d",
-    "tgLink": "tg://proxy?server=win.sosproxy.space&port=443&secret=ee477ccce74a28c13a2ef6ec9e01510c3164726976652e676f6f676c652e636f6d"
+    "secret": "dd97caa3c6888366f26b12f994f02ecf1a",
+    "tgLink": "tg://proxy?server=proxy.proxymtproto.net&port=443&secret=dd97caa3c6888366f26b12f994f02ecf1a"
   },
   {
     "id": 72,
@@ -64,10 +57,10 @@
   },
   {
     "id": 78,
-    "server": "108.165.233.137",
-    "port": 443,
-    "secret": "24bd7c651c0cdef3195110f94d4c92ce",
-    "tgLink": "tg://proxy?server=108.165.233.137&port=443&secret=24bd7c651c0cdef3195110f94d4c92ce"
+    "server": "nya-nya.top",
+    "port": 853,
+    "secret": "ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b",
+    "tgLink": "tg://proxy?server=nya-nya.top&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b"
   },
   {
     "id": 79,
@@ -84,21 +77,42 @@
     "tgLink": "tg://proxy?server=195.254.165.250&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
   },
   {
+    "id": 73,
+    "server": "90.188.4.105",
+    "port": 7997,
+    "secret": "ee4c670831e7ee84c7c3a287a2184181d8626979736b32322e7275",
+    "tgLink": "tg://proxy?server=90.188.4.105&port=7997&secret=ee4c670831e7ee84c7c3a287a2184181d8626979736b32322e7275"
+  },
+  {
     "id": 81,
+    "server": "195.254.165.251",
+    "port": 25565,
+    "secret": "dd79e344818749bd7ac519130220c25d09",
+    "tgLink": "tg://proxy?server=195.254.165.251&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
+  },
+  {
+    "id": 82,
     "server": "195.254.165.253",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=195.254.165.253&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
   },
   {
-    "id": 82,
+    "id": 75,
+    "server": "win.sosproxy.space",
+    "port": 443,
+    "secret": "ee477ccce74a28c13a2ef6ec9e01510c3164726976652e676f6f676c652e636f6d",
+    "tgLink": "tg://proxy?server=win.sosproxy.space&port=443&secret=ee477ccce74a28c13a2ef6ec9e01510c3164726976652e676f6f676c652e636f6d"
+  },
+  {
+    "id": 83,
     "server": "195.254.165.252",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=195.254.165.252&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
   },
   {
-    "id": 83,
+    "id": 84,
     "server": "195.254.165.247",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
