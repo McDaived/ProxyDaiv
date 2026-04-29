@@ -28,80 +28,59 @@
     "tgLink": "tg://proxy?server=vaslshid.co.uk.&port=85&secret=FgMBAgABAAH8AxOG4kw63Q=="
   },
   {
-    "id": 73,
-    "server": "142.54.189.106",
-    "port": 443,
-    "secret": "ee09db815a6d82a31fda76f872230c69d7706b676275696c642e6f7267",
-    "tgLink": "tg://proxy?server=142.54.189.106&port=443&secret=ee09db815a6d82a31fda76f872230c69d7706b676275696c642e6f7267"
-  },
-  {
     "id": 75,
-    "server": "193.233.210.222",
-    "port": 443,
-    "secret": "ddaf8b8433ec53435133379366e6024926",
-    "tgLink": "tg://proxy?server=193.233.210.222&port=443&secret=ddaf8b8433ec53435133379366e6024926"
-  },
-  {
-    "id": 78,
     "server": "195.254.165.249",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=195.254.165.249&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
   },
   {
-    "id": 76,
-    "server": "proxy.proxymtproto.net",
-    "port": 443,
-    "secret": "dd97caa3c6888366f26b12f994f02ecf1a",
-    "tgLink": "tg://proxy?server=proxy.proxymtproto.net&port=443&secret=dd97caa3c6888366f26b12f994f02ecf1a"
+    "id": 74,
+    "server": "grin-idle.top",
+    "port": 853,
+    "secret": "ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b",
+    "tgLink": "tg://proxy?server=grin-idle.top&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b"
   },
   {
-    "id": 79,
+    "id": 76,
     "server": "195.254.165.250",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=195.254.165.250&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
   },
   {
-    "id": 74,
-    "server": "win.sosproxy.space",
-    "port": 443,
-    "secret": "ee477ccce74a28c13a2ef6ec9e01510c3164726976652e676f6f676c652e636f6d",
-    "tgLink": "tg://proxy?server=win.sosproxy.space&port=443&secret=ee477ccce74a28c13a2ef6ec9e01510c3164726976652e676f6f676c652e636f6d"
-  },
-  {
-    "id": 80,
+    "id": 77,
     "server": "195.254.165.251",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=195.254.165.251&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
   },
   {
-    "id": 81,
+    "id": 78,
     "server": "195.254.165.253",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=195.254.165.253&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
   },
   {
-    "id": 82,
+    "id": 79,
     "server": "195.254.165.252",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=195.254.165.252&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
   },
   {
-    "id": 83,
+    "id": 73,
+    "server": "tproxyru.live.",
+    "port": 8980,
+    "secret": "ee104462821249bd7ac519130220c25d09617669746f2e7275",
+    "tgLink": "tg://proxy?server=tproxyru.live.&port=8980&secret=ee104462821249bd7ac519130220c25d09617669746f2e7275"
+  },
+  {
+    "id": 80,
     "server": "195.254.165.247",
     "port": 25565,
     "secret": "dd79e344818749bd7ac519130220c25d09",
     "tgLink": "tg://proxy?server=195.254.165.247&port=25565&secret=dd79e344818749bd7ac519130220c25d09"
-  },
-  {
-    "id": 77,
-    "server": "nya-nya.top",
-    "port": 853,
-    "secret": "ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b",
-    "tgLink": "tg://proxy?server=nya-nya.top&port=853&secret=ee54ce330e4690cc297d2b031ff3f288b06d742e616b656e61692e636c69636b"
   }
 ]
